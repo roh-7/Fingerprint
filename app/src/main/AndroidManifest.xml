@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fingerprint">
 
-    <uses-feature android:name="android.hardware.fingerprint"
-        android:required="true"/>
-    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-feature
+        android:name="android.hardware.fingerprint"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
         android:allowBackup="true"
@@ -19,9 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Login">
-
-        </activity>
+        <activity android:name=".activities.Login"></activity>
+        <activity android:name=".activities.Base"></activity>
     </application>
 
 </manifest>
