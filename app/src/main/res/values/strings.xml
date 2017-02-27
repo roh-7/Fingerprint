@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Fingerprint</string>
+    <string name="instructions">Please place your finger on the fingerprint scanner</string>
+</resources>
