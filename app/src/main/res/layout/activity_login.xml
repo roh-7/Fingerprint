@@ -42,4 +42,10 @@
         android:layout_centerInParent="true"
         android:id="@+id/textview"
         android:layout_below="@id/textView2"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/msg"/>
 </RelativeLayout>

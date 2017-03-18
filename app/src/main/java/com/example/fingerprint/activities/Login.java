@@ -40,6 +40,7 @@ public class Login extends AppCompatActivity {
     private FingerprintManager.CryptoObject cryptoObject;
     private FingerprintManager fingerprintManager;
     private KeyguardManager keyguardManager;
+    private TextView textViewmsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,8 @@ public class Login extends AppCompatActivity {
                 (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
 
         textView = (TextView) findViewById(R.id.textview);
+
+        textViewmsg = (TextView)findViewById(R.id.msg);
 
         // All the if blocks
 
@@ -86,7 +89,7 @@ public class Login extends AppCompatActivity {
 
                 // Here, I’m referencing the FingerprintHandler class that we’ll create in the next section. This class will be responsible
                 // for starting the authentication process (via the startAuth method) and processing the authentication process events//
-                FingerprintHandler helper = new FingerprintHandler(this);
+                FingerprintHandler helper = new FingerprintHandler(this,textViewmsg);
                 helper.startAuth(fingerprintManager, cryptoObject);
             }
         }

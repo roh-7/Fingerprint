@@ -9,6 +9,8 @@ import android.os.Build;
 import android.os.CancellationSignal;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 @TargetApi(Build.VERSION_CODES.M)
@@ -19,8 +21,12 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     private CancellationSignal cancellationSignal;
     private Context context;
+    private View view;
+    String msg;
+    TextView textView;
 
-    public FingerprintHandler(Context mContext) {
+    public FingerprintHandler(Context mContext,TextView textView) {
+        this.textView = textView;
         context = mContext;
     }
 
@@ -43,6 +49,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         //I’m going to display the results of fingerprint authentication as a series of toasts.
         //Here, I’m creating the message that’ll be displayed if an error occurs//
         Log.v("t","1");
+        msg = "Authentication error\n" + errString;
+        textView.setText(msg);
         Toast.makeText(context, "Authentication error\n" + errString, Toast.LENGTH_LONG).show();
     }
 
@@ -52,6 +60,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     public void onAuthenticationFailed() {
         Log.v("t","2");
+        msg = "Authentication failed";
+        textView.setText(msg);
         Toast.makeText(context, "Authentication failed", Toast.LENGTH_LONG).show();
     }
 
@@ -61,6 +71,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     //so to provide the user with as much feedback as possible I’m incorporating this information into my toast//
     public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
         Log.v("t","3");
+        msg = "Authentication help\n"+helpString;
+        textView.setText(msg);
         Toast.makeText(context, "Authentication help\n" + helpString, Toast.LENGTH_LONG).show();
     }
 
@@ -69,6 +81,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     public void onAuthenticationSucceeded(
             FingerprintManager.AuthenticationResult result) {
         Log.v("t","4");
+        msg = "Success!";
+        textView.setText(msg);
         Toast.makeText(context, "Success!", Toast.LENGTH_LONG).show();
     }
 
